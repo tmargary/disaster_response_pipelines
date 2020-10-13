@@ -26,7 +26,6 @@ def load_data(database_filepath):
     # load data from database
     engine = create_engine('sqlite:///' + database_filepath)
     df = pd.read_sql("SELECT * FROM DisasterResponse", engine)
-    df = df.iloc[:50,:]
     X = df['message']
     Y = df.iloc[:,4:].astype('int64')
     category_names = list(np.unique(Y))

@@ -18,3 +18,9 @@ The final result of the project is a website which shows visualizations, as well
 
 ## Deployment Visualisations:</br></br>
 ![](https://github.com/tmargary/disaster_response_pipelines/blob/master/deployment_screenshots/3.png)
+
+## Resources
+- **Mentorship:** Udacity team. Special thanks to Rajat P.<br/>
+- **Python Version:** 3.8<br/>
+- **Packages:** pandas, numpy, sklearn, sqlalchemy, plotly, NLTK, joblib, flask<br/>
+- **Data Source:** Figure Eight<br/>

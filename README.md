@@ -11,3 +11,10 @@ Finally, I exported the model to a pickle file.
 
 ## Flask App
 In the last step, I have displayed my results in a Flask web app using the workspace provided by Udacity.
+
+## Deployment
+The final result of the project is a website which shows visualizations, as well as classifies a message inputed by the user. The following screenshots shows the results of multi-output classification:</br></br>
+![](https://github.com/tmargary/disaster_response_pipelines/blob/master/deployment_screenshots/2.png)</br></br>
+
+Visualizations:</br></br>
+![](https://github.com/tmargary/disaster_response_pipelines/blob/master/deployment_screenshots/1.png)

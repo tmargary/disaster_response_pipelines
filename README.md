@@ -17,4 +17,4 @@ The final result of the project is a website which shows visualizations, as well
 ![](https://github.com/tmargary/disaster_response_pipelines/blob/master/deployment_screenshots/2.png)</br></br>
 
 Visualizations:</br></br>
-![](https://github.com/tmargary/disaster_response_pipelines/blob/master/deployment_screenshots/1.png)
+![](https://github.com/tmargary/disaster_response_pipelines/blob/master/deployment_screenshots/3.png)

@@ -19,7 +19,7 @@ from sklearn.multioutput import MultiOutputClassifier
 from sklearn.base import BaseEstimator, TransformerMixin
 import pickle
 
-sys.path.append("/home/workspace/models")
+sys.path.append("../models")
 from message_length import MessageLength
 
 def load_data(database_filepath):

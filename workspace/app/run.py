@@ -8,7 +8,7 @@ from nltk.tokenize import word_tokenize
 from flask import Flask
 from flask import render_template, request, jsonify
 from plotly.graph_objs import Bar
-from sklearn.externals import joblib
+import joblib
 from sqlalchemy import create_engine
 import sys
 from sklearn.base import BaseEstimator, TransformerMixin
@@ -17,7 +17,7 @@ from sklearn.base import BaseEstimator, TransformerMixin
 app = Flask(__name__)
 
 
-sys.path.append("/home/workspace/models")
+sys.path.append("../models")
 from message_length import MessageLength
 
 
@@ -37,6 +37,7 @@ engine = create_engine('sqlite:///../data/DisasterResponse.db')
 df = pd.read_sql_table('DisasterResponse', engine)
 
 # load model
+
 model = joblib.load("../models/classifier.pkl")
 
 

@@ -60,6 +60,7 @@ def index():
     # create visuals
     # TODO: Below is an example - modify to create your own visuals
     graphs = [
+        # bar graph of genre distribution
         {
             'data': [
                 Bar(

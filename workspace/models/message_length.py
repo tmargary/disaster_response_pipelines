@@ -4,6 +4,10 @@ import numpy as np
 from sklearn.base import BaseEstimator, TransformerMixin
 
 class MessageLength(BaseEstimator, TransformerMixin):
+    '''
+    Calculates message length, which is later used 
+    in the machiene learning pipeline
+    '''
     def fit(self, X, y=None):
         return self
 

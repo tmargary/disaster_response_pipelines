@@ -5,6 +5,11 @@ from sqlalchemy import create_engine
 
 
 def load_data(messages_filepath, categories_filepath):
+    '''
+    Loads the data based on two strings of the file paths.
+    In this case please include './messages.csv', './categories.csv'
+    to run the function
+    '''
     global messages
     global categories
     
@@ -16,6 +21,15 @@ def load_data(messages_filepath, categories_filepath):
 
 
 def clean_data(df):
+    '''
+    The function merges the two datasets loaded above, 
+    creates a dataframe of the 36 individual category columns,
+    extracts a list of new column names for categories,
+    renames the columns of `categories`, convert category values 
+    to just numbers 0 or 1, drops the original categories column 
+    from `df` and concatenate the original dataframe with the new 
+    `categories` dataframe
+    '''
     global messages
     global categories
     # merge datasets
@@ -56,12 +70,18 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
-    # save the clean dataset into an sqlite database
+    '''
+    Saves the clean dataset into an sqlite database
+    '''
     engine = create_engine('sqlite:///DisasterResponse.db')
     df.to_sql('DisasterResponse', engine, index=False)  
 
     
 def main():
+    '''
+    Main Loads, Cleans, and Saves the data into 
+    an sqlite database
+    '''
     if len(sys.argv) == 4:
 
         messages_filepath, categories_filepath, database_filepath = sys.argv[1:]

@@ -23,9 +23,16 @@ sys.path.append("../models")
 from message_length import MessageLength
 
 def load_data(database_filepath):
+    '''
+    Loads the data based on the file paths. In this 
+    case please include 'DisasterResponse.db'to run 
+    the function.
+    '''
+    global df
     # load data from database
     engine = create_engine('sqlite:///' + database_filepath)
     df = pd.read_sql("SELECT * FROM DisasterResponse", engine)
+    # df = df.iloc[:50,:]
     X = df['message']
     Y = df.iloc[:,4:].astype('int64')
     category_names = list(np.unique(Y))
@@ -34,7 +41,9 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
-    # tokenization function to process the text data
+    '''
+    Tokenization function to process the text data
+    '''
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
     
@@ -57,7 +66,11 @@ def tokenize(text):
 #         # of observations from both the transformer should be same.
         
 def build_model():
-    # building a machine learning pipeline with GridSearchCV parameters
+    '''
+    Builds the pipeline based on predefined parameters,
+    that's going to be used by GridSearchCV. MessageLength()
+    is used as an additional feauture in the model.
+    '''
     parameters = {
         'clf__estimator__criterion': ('gini', 'entropy'),
         'clf__estimator__bootstrap': (True, False)
@@ -83,14 +96,23 @@ def build_model():
 
 
 def evaluate_model(cv, X_test, Y_test, category_names):
-    # evaluating the model based on the overall accuracy
+    '''
+    evaluating the model based on the overall accuracy, 
+    f1 score, precision and recall
+    '''
     Y_pred = cv.predict(X_test)
     accuracy = (Y_pred == Y_test).mean().mean()
-    return accuracy
+    
+    for i in range(len(df.columns[5:])):
+        print(df.columns[5+i])
+        print(classification_report(Y_test.to_numpy()[:, 0], Y_pred[:, 0]))
+        print(accuracy)
 
 
 def save_model(model, model_filepath):
-    # exporting the model as a pickle file
+    '''
+    exporting the model as a pickle file
+    '''
     pickle.dump(model, open(model_filepath, 'wb'))
     
     #with open(model_filepath, 'wb') as file:
@@ -98,6 +120,11 @@ def save_model(model, model_filepath):
         
         
 def main():
+    '''
+    The main loads DisasterResponse, builds, trains the model, 
+    prints the best model parameters, and saves the model after 
+    evaluation
+    '''
     if len(sys.argv) == 3:
         database_filepath, model_filepath = sys.argv[1:]
         print('Loading data...\n    DATABASE: {}'.format(database_filepath))
@@ -122,7 +149,8 @@ def main():
     else:
         print('Please provide the filepath of the disaster messages database '\
               'as the first argument and the filepath of the pickle file to '\
-              'save the model to as the second argument. \n\nExample: python train_classifier.py ../data/DisasterResponse.db classifier.pkl')
+              'save the model to as the second argument. \n\nExample: '\
+              'python train_classifier.py ../data/DisasterResponse.db classifier.pkl')
 
 
 if __name__ == '__main__':

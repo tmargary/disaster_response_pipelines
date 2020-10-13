@@ -23,6 +23,7 @@ sys.path.append("../models")
 from message_length import MessageLength
 
 def load_data(database_filepath):
+    # load data from database
     engine = create_engine('sqlite:///' + database_filepath)
     df = pd.read_sql("SELECT * FROM DisasterResponse", engine)
     df = df.iloc[:50,:]
@@ -34,6 +35,7 @@ def load_data(database_filepath):
 
 
 def tokenize(text):
+    # tokenization function to process the text data
     tokens = word_tokenize(text)
     lemmatizer = WordNetLemmatizer()
     
@@ -56,8 +58,7 @@ def tokenize(text):
 #         # of observations from both the transformer should be same.
         
 def build_model():
-
-
+    # building a machine learning pipeline with GridSearchCV parameters
     parameters = {
         'clf__estimator__criterion': ('gini', 'entropy'),
         'clf__estimator__bootstrap': (True, False)
@@ -83,12 +84,14 @@ def build_model():
 
 
 def evaluate_model(cv, X_test, Y_test, category_names):
+    # evaluating the model based on the overall accuracy
     Y_pred = cv.predict(X_test)
     accuracy = (Y_pred == Y_test).mean().mean()
     return accuracy
 
 
 def save_model(model, model_filepath):
+    # exporting the model as a pickle file
     pickle.dump(model, open(model_filepath, 'wb'))
     
     #with open(model_filepath, 'wb') as file:

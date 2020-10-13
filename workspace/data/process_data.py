@@ -56,6 +56,7 @@ def clean_data(df):
 
 
 def save_data(df, database_filename):
+    # save the clean dataset into an sqlite database
     engine = create_engine('sqlite:///DisasterResponse.db')
     df.to_sql('DisasterResponse', engine, index=False)  
 

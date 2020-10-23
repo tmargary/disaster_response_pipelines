@@ -34,5 +34,5 @@ The final result of the project is a website that shows visualizations, as well 
 ## Resources
 - **Mentorship:** Udacity team. Special thanks to Rajat P.<br/>
 - **Python Version:** 3.8<br/>
-- **Packages:** pandas, numpy, sklearn, sqlalchemy, plotly, NLTK, joblib, flask<br/>
+- **Packages:** pandas, numpy, sklearn, GridSearchCV, sqlalchemy, plotly, NLTK, joblib, flask<br/>
 - **Data Source:** Figure Eight<br/>

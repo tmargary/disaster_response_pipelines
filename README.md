@@ -29,7 +29,7 @@ The final result of the project is a website that shows visualizations, as well 
 2. Run the following command in the app's directory to run your web app.
     `python run.py`
 
-3. Go to the website.
+3. Go to the website. 
 
 ## Resources
 - **Mentorship:** Udacity team. Special thanks to Rajat P.<br/>
